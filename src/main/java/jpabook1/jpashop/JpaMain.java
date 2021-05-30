@@ -18,7 +18,8 @@ public class JpaMain {
 
         try {
 
-
+            Member member = new Member();
+            em.persist(member);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
