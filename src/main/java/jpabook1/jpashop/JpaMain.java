@@ -1,11 +1,10 @@
 package jpabook1.jpashop;
 
-import jpabook1.jpashop.domain.Member;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -18,9 +17,7 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            em.persist(member);
-            transaction.commit();
+            em.find()
         } catch (Exception e) {
             transaction.rollback();
         } finally {
@@ -29,4 +26,6 @@ public class JpaMain {
 
         emf.close();
     }
+
+
 }

@@ -44,7 +44,7 @@ JPA 핵심 - 영속성 컨텍스트
   transaction.begin();
   
   // 영속 엔티티 조회
-  // find()시에 넘겨준 entity의 스냅샷이 생성된다.
+  // find()시에 넘겨준 entity의 스냅샷이 생성된다.(1차 캐시에 없으므로)
   Member memberA = em.find(Member.class, "memberA");
   
   // 받은 영속 엔티티 수정
@@ -52,7 +52,7 @@ JPA 핵심 - 영속성 컨텍스트
   memberA.setAget(10);
   
   // 해당 코드는 커밋시에 
-  // find()시 만들어놓은 스냅샷과 비교하여 
+  // 만들어놓은 스냅샷과 비교하여 
   // 자동 변경 후 반영하기에 필요가 없다.
   // em.persist(member);
           
