@@ -11,11 +11,25 @@ public class OrderItem {
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
-    @Column(name = "ORDER_ID")
-    private Long orderId;
+    /**
+     *     더이상 외래키 값으로 직접 연관관계를 맺지 않는다.
+     *     객체 자체를 연관관계로 맺는다.
+     *     @Column(name = "ORDER_ID")
+     *     private Long orderId;
+     *
+     *     @Column(name = "ITEM_ID")
+     *     private Long itemId;
+     */
 
-    @Column(name = "ITEM_ID")
-    private Long itemId;
+    @ManyToOne
+    @JoinColumn(name = "ORDER_ID")
+    private Order order;
+
+    // 단방향으로 설계했다
+    // 상품 자체로
+    @ManyToOne
+    @JoinColumn(name = "ITEM_ID")
+    private Item item;
 
     private LocalDateTime orderDate;
 
@@ -28,18 +42,7 @@ public class OrderItem {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-    public Long getItemId() {
-        return itemId;
-    }
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
+
     public LocalDateTime getOrderDate() {
         return orderDate;
     }
