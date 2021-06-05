@@ -31,4 +31,21 @@
 ![img_3.png](img_3.png)
 * 공통 매핑정보가 필요 할 시 사용
 * DB는 그림처럼 각각의 테이블을 두지만, 객체입장에서 속성만 상속 받아 사용하고 싶을 때 사용.
+* 상속관계 매핑 개념이 아니다, 엔티티가 아니므로 em.find()로 찾을 수 없으며 존재 하지도 않는다.(부모 타입으로 조회 안된다는 의미)
+* 추상 클래스로 만들길 권장.
+
+```java
+import javax.persistence.Column;
+
+// 테이블 정보를 위해 객체에 해당 정보가 공통으로 필요한 상황
+// 해당 super class 를 상속 받아 사용하기만 하면 됨
+@Getter
+@Setter
+@MappedSuperclass   // 이것 만 넣어주면 된다.
+public class abstract BaseEntity {
+     @Column(name = "당연 사용가능")
+     private String lastModifiedBy;
+     private LocalDateTime lastModifiedDate;
+}
+```
   
