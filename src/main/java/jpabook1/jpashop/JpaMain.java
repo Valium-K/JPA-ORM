@@ -1,5 +1,7 @@
 package jpabook1.jpashop;
 
+import jpabook1.jpashop.domain.Book;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,8 +18,14 @@ public class JpaMain {
         transaction.begin();
 
         try {
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("asdf");
 
-            em.find()
+            em.persist(book);
+
+            transaction.commit();
+
         } catch (Exception e) {
             transaction.rollback();
         } finally {
