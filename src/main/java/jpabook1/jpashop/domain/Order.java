@@ -21,14 +21,15 @@ public class Order extends BaseEntity {
      *     private Long memberId;
      */
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Order 생성 후 Delivery에 넣을 때 Delivery도 자동 저장 됨.
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
-    @OneToMany(mappedBy = "order")
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();
     private LocalDateTime orderDate;
 
