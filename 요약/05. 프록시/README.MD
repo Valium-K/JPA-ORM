@@ -17,3 +17,38 @@ entityManger.getReference(): DB조회를 미루는 목 오브젝트(프록시)�
   > 예로 프록시 객체로 조회 후 초기화한 객체 A를 find(class, A.getId())를 하면 똑같은(==이 true인)프록시 객체가 넘어온다.
 * 영속성 컨텍스트가 종료됐거나, em.detach(Entity)를 한 이후 초기화를 요청하면     
   `org.hibernate.LazyInitializationExcpetion`이 발생한다.
+  
+## 지연 로딩
+연관관계를 프록시를 이용해 접근 시점에 로딩한다.
+* 예로 Member를 조회했을 때 Team을 잘 사용하지 않을경우 사용가능.
+* `@ManyToOne`, `@OnetoOne` fectch의 기본설정.
+
+### 문제점
+* JPQL에서 N + 1문제를 일으킴(1개의 쿼리가 N개의 추가 쿼리를 던짐)
+  * 이후에 fetch join으로 해결 가능
+```java
+public class Member {
+    
+    // Member.getTeam().getName() 와 같이 DB를 실제 조회시 로딩한다.
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Team team;    
+  // ...
+}
+```
+
+## 즉시 로딩(권장하지 않음)
+연관관계를 한 쿼리에 같이(Join) 조회한다.
+* 예로 Member를 조회했을 때 Team을 거의 자주 사용 할 경우 사용가능.
+```java
+public class Member {
+    
+    // Member.getTeam().getName() 와 같이 DB를 실제 조회시 로딩한다.
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Team team;    
+  // ...
+}
+```
+
+## 정리
+* 모든 연관관계는 지연 로딩을 사용해야함.
+* 실무에서 즉시로딩을 사용하지 않는다.
