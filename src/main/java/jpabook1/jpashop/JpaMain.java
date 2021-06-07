@@ -19,21 +19,6 @@ public class JpaMain {
         transaction.begin();
 
         try {
-            Member member = new Member();
-            member.setName("asdf");
-
-            em.persist(member);
-
-            //em.flush();
-            //em.clear();
-
-            Member foundMember = em.getReference(Member.class, 1L);
-
-            System.out.println(foundMember.getClass());
-            System.out.println(foundMember.getId());
-            System.out.println(foundMember.getName());
-
-
 
         } catch (Exception e) {
             transaction.rollback();
@@ -41,8 +26,9 @@ public class JpaMain {
             em.close();
         }
 
+        /**
+         * validate every single field is not null.
+         */
         emf.close();
     }
-
-
 }
