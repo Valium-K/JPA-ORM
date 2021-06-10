@@ -1,18 +1,13 @@
-package jpabook1.jpashop;
-
-import jpabook1.jpashop.domain.Book;
-import jpabook1.jpashop.domain.Member;
+package jpql;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
-
-public class JpaMain {
+public class JpqlMain {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
@@ -20,6 +15,7 @@ public class JpaMain {
         transaction.begin();
 
         try {
+
         } catch (Exception e) {
             transaction.rollback();
         } finally {
