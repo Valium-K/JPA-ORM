@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class JpqlMain {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook1");
 
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
