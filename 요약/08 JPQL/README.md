@@ -16,6 +16,7 @@ JPQL(Java Persistence Query Language)
 em.createQuery("SELECT m FROM Member m where m.username=:username");
     .setParameter("username", usernameParam);
 ```
+
 * 위치 기준
 ```java
 em.createQuery("SELECT m FROM Member m where m.username=?1");
