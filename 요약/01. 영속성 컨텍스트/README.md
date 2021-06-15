@@ -66,6 +66,7 @@ JPA 핵심 - 영속성 컨텍스트
 ## flush
   * 영속성 컨택스트의 변경 내용을 DB에 동기화
   * 직접 호출가능하다. -> entityManager.flush();
+  * auto 모드일 경우 commit, 쿼리시, flush() 시에 flush 된다.
 
 ## 준영속 상태
   * 더이상 영속성 컨택스트에서 관리되지 않는 상태 / 객체    
