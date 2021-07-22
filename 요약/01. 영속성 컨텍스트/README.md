@@ -7,7 +7,7 @@ JPA 핵심 - 영속성 컨텍스트
 * `EntityManager`는 내부적으로 영속성 컨텍스트가 존재한다.
   > 즉, `EntityManager`를 통해 영속성 컨택스트에 접근한다. 
  
-##영속성 컨텍스트
+## 영속성 컨텍스트
 * 엔티티를 영구 저장 / 관리하는 환경    
 ```EntityManager.persist(entity);``` : entity가 영속성 컨텍스트에 persist 된다.
 > 존속하다: continue, maintain / 지속하다: continue, persistent    
